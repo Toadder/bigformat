@@ -2409,6 +2409,73 @@ body._lock {
   height: 55px;
 }
 
+.contact__checkbox {
+  max-width: 842px;
+  margin: 16px auto 0 auto;
+}
+
+.contact__checkbox input {
+  display: none;
+}
+
+.contact__checkbox input:checked + label::after {
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+}
+
+.contact__checkbox input._error + label::before {
+  -webkit-box-shadow: 0 0 10px #8E4FD5;
+          box-shadow: 0 0 10px #8E4FD5;
+}
+
+.contact__checkbox label {
+  font-size: 14px;
+  line-height: 121.42857%;
+  color: #888DA7;
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.contact__checkbox label::before {
+  content: '';
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  border: 1px solid #888DA7;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25px;
+          flex: 0 0 25px;
+  height: 25px;
+  border-radius: 10px;
+  margin-right: 12px;
+}
+
+.contact__checkbox label::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #8E4FD5;
+  left: 6.5px;
+  top: 6.5px;
+  -webkit-transition: -webkit-transform 0.4s ease 0s;
+  transition: -webkit-transform 0.4s ease 0s;
+  -o-transition: transform 0.4s ease 0s;
+  transition: transform 0.4s ease 0s;
+  transition: transform 0.4s ease 0s, -webkit-transform 0.4s ease 0s;
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+}
+
 .why {
   padding: 0 0 95px 0;
 }
@@ -2669,6 +2736,42 @@ body._lock {
   -webkit-transition: stroke 0.3s ease 0s;
   -o-transition: stroke 0.3s ease 0s;
   transition: stroke 0.3s ease 0s;
+}
+
+.popup-thanks__content {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup-thanks__img {
+  margin-left: -160px;
+  -webkit-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+.popup-thanks__info {
+  height: 100%;
+  position: static;
+}
+
+.popup-thanks__close {
+  top: 44px;
+  right: 52px;
+}
+
+.popup-thanks__title {
+  margin-bottom: 32px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.popup-thanks__text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 137.5%;
 }
 
 .popup-info {
@@ -3804,6 +3907,11 @@ body._lock {
     width: 230px;
   }
 
+  .contact__checkbox {
+    max-width: 708px;
+    margin-top: 14px;
+  }
+
   .why {
     padding: 0 0 30px 0;
   }
@@ -3889,6 +3997,15 @@ body._lock {
   .popup__form {
     grid-template-columns: 1fr;
     grid-gap: 10px;
+  }
+
+  .popup-thanks__title {
+    margin-bottom: 20px;
+  }
+
+  .popup-thanks__text {
+    font-size: 24px;
+    text-align: center;
   }
 
   .popup-info__img {
@@ -4088,6 +4205,24 @@ body._lock {
 
   .contact__btn {
     width: 100%;
+  }
+
+  .contact__checkbox {
+    max-width: 100%;
+  }
+
+  .contact__checkbox label::before {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 22px;
+            flex: 0 0 22px;
+    height: 22px;
+  }
+
+  .contact__checkbox label::after {
+    width: 10px;
+    height: 10px;
+    left: 6px;
+    top: 6px;
   }
 }
 
@@ -4404,6 +4539,23 @@ body._lock {
     margin-bottom: 58px;
   }
 
+  .letter__slider-wrapper {
+    position: relative;
+  }
+
+  .letter__slider-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/letter/dec-bg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
+    background-position: center;
+  }
+
   .letter__slider::before {
     display: none;
   }
@@ -4689,6 +4841,18 @@ body._lock {
     grid-row: 4 / 4;
   }
 
+  .popup-thanks__info {
+    position: relative;
+  }
+
+  .popup-thanks__title {
+    margin-bottom: 18px;
+  }
+
+  .popup-thanks__text {
+    font-size: 20px;
+  }
+
   .popup-info__content {
     border-color: #8E4FD5;
   }
@@ -4918,4 +5082,9 @@ body._lock {
 @media (max-width: 820px){
 
   .webp .step__number::after{ background-image: url(../img/step/num-bg.webp); }
+}
+
+@media (max-width: 767.98px){
+
+  .webp .letter__slider-wrapper::before{ background-image: url(../img/letter/dec-bg.webp); }
 }

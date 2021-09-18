@@ -324,6 +324,8 @@ function phoneMask() {
 }
 
 
+
+
 jQuery(document).ready(function($) {
   phoneMask();
   ymap();
@@ -362,14 +364,17 @@ jQuery(document).ready(function($) {
     }
 
     function checkStepsScroll() {
-      let sectionStepTop = document.querySelector('.step').getBoundingClientRect().top;
-      let scrollTop = window.pageYOffset;
-      let sectionStepOffsetTop = sectionStepTop + scrollTop;
+      var blockPosition = $('.step').offset().top,
+        windowScrollPosition = $(window).scrollTop() + $('.step').css('padding-top').replace('px', '') * 1.5 + $('.header').outerHeight();
 
-      if (scrollTop - window.innerHeight > sectionStepTop) {
+        console.log();
+      
+      if( blockPosition < windowScrollPosition && blockPosition + $('.step').outerHeight() > windowScrollPosition) {
         stepStart();
-        window.removeEventListener("scroll", checkStepsScroll);
-      }
+
+        window.removeEventListener('scroll', checkStepsScroll);
+      } 
+
     }
 
     function stepStart() {
@@ -394,9 +399,8 @@ jQuery(document).ready(function($) {
         }
 
       }, 1500);
-
-      
     }
+
 
   })();
 
@@ -429,7 +433,6 @@ jQuery(document).ready(function($) {
 
 
       let error = formValidate(form);
-      let formData = new FormData(form);
 
       if (error === 0) {
         // ОТПРАВКА ФОРМЫ
@@ -448,9 +451,14 @@ jQuery(document).ready(function($) {
             formAddError(input);
             error++;
           }
-        } else if (input.value == "") {
+        } else if(input.getAttribute('type') == 'checkbox' && input.checked === false) {
           formAddError(input);
           error++;
+        } else {
+          if(input.value == '') {
+            formAddError(input);
+            error++;
+          }
         }
       }
 
