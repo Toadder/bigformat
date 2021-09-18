@@ -416,6 +416,13 @@ jQuery(document).ready(function($) {
       $('.popup-info__img source').attr('srcset', `${srcImg[0]}-big.webp`);
       $('.popup-info__img img').attr('src', `${srcImg[0]}-big.${srcImg[1]}`);
 
+      $('.popup-info__close').click(function() {
+        const onePixelImg = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg==';
+        setTimeout(() => {
+          $('.popup-info__img img').attr('src', onePixelImg);
+          $('.popup-info__img source').attr('srcset', onePixelImg);
+        }, 1000);
+      });
     });
   })();
   
@@ -507,6 +514,10 @@ jQuery(document).ready(function($) {
       fadeEffect: {
         crossFade: true,
       },
+      preloadImages: false,
+      lazy: {
+        loadPrevNext: false,
+      },
       observer: true,
       observeParents: true,
       observer: true,
@@ -528,6 +539,10 @@ jQuery(document).ready(function($) {
       fadeEffect: {
         crossFade: true,
       },
+      preloadImages: false,
+      lazy: {
+        loadPrevNext: false,
+      },
       observeSlideChildren: true,
       navigation: {
           nextEl: '.card-service__next._montage',
@@ -546,6 +561,10 @@ jQuery(document).ready(function($) {
       fadeEffect: {
         crossFade: true,
       },
+      preloadImages: false,
+      lazy: {
+        loadPrevNext: false,
+      },
       observeSlideChildren: true,
       navigation: {
           nextEl: '.card-service__next._production',
@@ -562,6 +581,10 @@ jQuery(document).ready(function($) {
       autoplay: true,
       delay: 3650,
       effect: "fade",
+      preloadImages: false,
+      lazy: {
+        loadPrevNext: false,
+      },
       fadeEffect: {
         crossFade: true,
       },
@@ -581,6 +604,10 @@ jQuery(document).ready(function($) {
       loop: true,
       preventClicks: false,
       preventClicksPropagation: false,
+      preloadImages: false,
+      lazy:{
+        loadPrevNext: false,
+      },
       effect: "coverflow",
       coverflowEffect: {
         rotate: 0,
