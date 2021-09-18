@@ -256,6 +256,16 @@ function popup() {
       popupClose(popupActive);
     }
   });
+
+  if(isMobile.any()) {
+    document.addEventListener("backbutton", function(e) {
+      const popupActive = document.querySelector(".popup._open");
+      if(popupActive) {
+        e.preventDefault();
+        popupClose(popupActive);
+      }
+    }, false);
+  }
 }
 
 // Phone mask
