@@ -1260,7 +1260,7 @@ body._lock {
   left: 0;
   bottom: 35px;
   z-index: -1;
-  background-size: cover;
+  background-size: contain;
 }
 
 .step__number {
@@ -4115,6 +4115,8 @@ body._lock {
     height: 169px;
     background-image: url("../img/step/num-bg.png");
     z-index: -1;
+    background-size: contain;
+    background-repeat:  no-repeat;
   }
 
   .step__title {

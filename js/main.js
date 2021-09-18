@@ -187,6 +187,9 @@ function popup() {
       } else {
         bodyLock();
       }
+      if(isMobile.any()) {
+        history.pushState('', document.title, window.location.pathname + '#emerge');
+      }
       currentPopup.classList.add("_open");
       currentPopup.addEventListener("click", function (e) {
         if (!e.target.closest(".popup__content")) {
@@ -206,6 +209,9 @@ function popup() {
 
   function popupClose(popupActive, doUnlock = true) {
     if (unlock) {
+      if(isMobile.any()) {
+        history.pushState('', document.title, window.location.pathname);
+      }
       popupActive.classList.remove("_open");
       if (doUnlock) {
         bodyUnlock();
@@ -258,14 +264,15 @@ function popup() {
   });
 
   if(isMobile.any()) {
-    document.addEventListener("backbutton", function(e) {
-      const popupActive = document.querySelector(".popup._open");
-      if(popupActive) {
-        e.preventDefault();
-        popupClose(popupActive);
+    window.onhashchange = function() {
+      var s = window.location.hash.toString();
+      if(s != '#emerge') {
+        const popupActive = document.querySelector(".popup._open");
+        if(popupActive) popupClose(popupActive);
       }
-    }, false);
+    };
   }
+
 }
 
 // Phone mask
@@ -347,6 +354,8 @@ function phoneMask() {
       e.target.value = "";
     }
   }
+
+
 }
 
 
@@ -619,7 +628,8 @@ jQuery(document).ready(function($) {
       allowTouchMove: false,
       speed: 600,
       centeredSlides: true,
-      loop: true,
+      initialSlide: 1,
+      loop: false,
       preventClicks: false,
       preventClicksPropagation: false,
       preloadImages: false,
@@ -652,10 +662,14 @@ jQuery(document).ready(function($) {
           centeredSlides: false,
           effect: "slide",
           spaceBetween: 10,
+          loop: true,
+          initialSlide: 0,
         },
         768: {
           slidesPerView: 3,
           centeredSlides: true,
+          initialSlide: 1,
+          loop: false,
           effect: "coverflow",
           coverflowEffect: {
             rotate: 0,
